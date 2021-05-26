@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  dockerapi:
+    image: ${DOCKER_REGISTRY-}dockerapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - 8080:80
+  mssqldb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment: 
+    - ACCEPT_EULA=Y
+    - SA_PASSWORD=P@ssw0rd.
+    ports:
+    - 1433:1433
